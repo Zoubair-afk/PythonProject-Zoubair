@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # ---- STEP 1: Load Raman Data ----
-file_path = r"C:\Users\StdUser\PycharmProjects\PythonProject\LHCE3-baselined.txt"
+file_path = "LHCE3-baselined.txt"
 data = np.loadtxt(file_path, skiprows=1)
 
 # Extract columns
@@ -64,7 +64,7 @@ ax1.set_title("D and G band evolution during 1st Discharge")
 ax2 = fig.add_subplot(122, projection='3d')
 
 # Load potential data
-potential_file_path = r"C:\Users\StdUser\PycharmProjects\PythonProject\potential_data_LHCE3.txt"
+potential_file_path = "potential_data_LHCE3.txt"
 potential_data = np.loadtxt(potential_file_path, skiprows=1)
 
 # Extract potential data
@@ -100,6 +100,14 @@ ax2.invert_xaxis()  # Invert potential axis (flipped scale)
 ax2.zaxis.line.set_lw(0)  # Hide the Z-axis line
 ax2.set_zticks([])  # Remove Z-axis ticks
 ax2.grid(False)  # Hide the grid
+
+# Set the background to transparent ----
+ax2.xaxis.pane.fill = False
+ax2.yaxis.pane.fill = False
+ax2.zaxis.pane.fill = False
+ax2.xaxis.pane.set_edgecolor('w')
+ax2.yaxis.pane.set_edgecolor('w')
+ax2.zaxis.pane.set_edgecolor('w')
 
 # ---- STEP 8: Display the Combined Plot ----
 plt.tight_layout()  # Adjust layout for better spacing
